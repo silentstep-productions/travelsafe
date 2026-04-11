@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Safe — Stay Safe. Stay Informed.</title>
+<meta name="description" content="Real-time emergency zone intelligence for travellers, expats, and anyone who needs to know what's happening — sourced from embassies, government advisories, and trusted news feeds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1A3D1A;
+    --green-mid: #2D6A2D;
+    --green-light: #5A9E5A;
+    --green-pale: #EAF3DE;
+    --green-glow: #9CCF9C;
+    --amber: #E8A020;
+    --red: #C0392B;
+    --white: #FFFFFF;
+    --off-white: #F7FAF4;
+    --text: #1A1A1A;
+    --text-muted: #5A6B5A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(247,250,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(45,106,45,0.1);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-shield {
+    width: 34px; height: 34px;
+  }
+  .nav-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: 0.5px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem; font-weight: 400;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-cta {
+    background: var(--green-mid) !important;
+    color: var(--white) !important;
+    padding: 8px 20px !important;
+    border-radius: 24px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(90,158,90,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(45,106,45,0.08) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--green-mid) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--green-mid) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 580px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-pale);
+    border: 1px solid rgba(45,106,45,0.2);
+    border-radius: 24px;
+    padding: 6px 14px;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--green-mid);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-light);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--green-dark);
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--green-mid);
+    position: relative;
+  }
+  .hero-sub {
+    font-size: 1.15rem; font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green-dark);
+    color: var(--white);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.95rem; font-weight: 500;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 24px rgba(26,61,26,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-mid); }
+  .btn-primary svg { width: 20px; height: 20px; }
+  .hero-note {
+    font-size: 0.82rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hero-note::before { content: "✓"; color: var(--green-light); font-weight: 700; }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: absolute; right: 6%; top: 50%;
+    transform: translateY(-50%);
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .phone-frame {
+    width: 240px; height: 480px;
+    background: var(--green-dark);
+    border-radius: 36px;
+    border: 6px solid rgba(255,255,255,0.15);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 32px 80px rgba(26,61,26,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: #0D1F0D;
+    position: relative; overflow: hidden;
+  }
+  .phone-map {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(45,106,45,0.3) 0%, transparent 60%);
+  }
+  .phone-map-lines {
+    position: absolute; inset: 0; opacity: 0.15;
+    background-image: linear-gradient(rgba(90,158,90,0.8) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(90,158,90,0.8) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .zone-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid;
+    animation: zonePulse 3s ease-in-out infinite;
+  }
+  .zone-amber {
+    width: 80px; height: 80px;
+    top: 30%; left: 35%;
+    border-color: var(--amber);
+    background: rgba(232,160,32,0.1);
+  }
+  .zone-red {
+    width: 50px; height: 50px;
+    top: 50%; left: 55%;
+    border-color: var(--red);
+    background: rgba(192,57,43,0.12);
+    animation-delay: 1s;
+  }
+  .zone-green {
+    width: 60px; height: 60px;
+    top: 15%; left: 20%;
+    border-color: var(--green-light);
+    background: rgba(90,158,90,0.1);
+    animation-delay: 0.5s;
+  }
+  @keyframes zonePulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  .phone-alert {
+    position: absolute; bottom: 20px; left: 10px; right: 10px;
+    background: rgba(26,61,26,0.95);
+    border: 1px solid rgba(90,158,90,0.3);
+    border-radius: 12px;
+    padding: 10px 12px;
+    backdrop-filter: blur(8px);
+  }
+  .phone-alert-title {
+    font-size: 9px; font-weight: 500;
+    color: var(--amber);
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+  .phone-alert-body {
+    font-size: 8px; color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+  .phone-notch {
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 24px;
+    background: var(--green-dark);
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+  .phone-status {
+    position: absolute; top: 8px; left: 14px; right: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 5;
+  }
+  .phone-time { font-size: 8px; color: rgba(255,255,255,0.6); font-weight: 500; }
+  .phone-icons { font-size: 7px; color: rgba(255,255,255,0.6); }
+  .phone-header {
+    position: absolute; top: 28px; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(90,158,90,0.15);
+  }
+  .phone-app-name { font-size: 9px; font-weight: 600; color: var(--white); letter-spacing: 1px; }
+  .phone-safe-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-light);
+    box-shadow: 0 0 6px var(--green-light);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--green-dark);
+    padding: 28px 48px;
+    display: flex; justify-content: center; gap: 80px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--white);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--green-glow);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* FEATURES */
+  .features {
+    padding: 100px 48px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--green-mid);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 64px;
+    max-width: 480px;
+    line-height: 1.2;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--white);
+    border: 1px solid rgba(45,106,45,0.1);
+    border-radius: 20px;
+    padding: 36px 32px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(45,106,45,0.12);
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green-mid);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--green-pale);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+  }
+  .feature-desc {
+    font-size: 0.92rem; font-weight: 300;
+    color: var(--text-muted); line-height: 1.65;
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--green-dark);
+    padding: 100px 48px;
+    position: relative; overflow: hidden;
+  }
+  .how::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .how-inner {
+    max-width: 900px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .how .section-label { color: var(--green-glow); }
+  .how .section-title { color: var(--white); margin-bottom: 64px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+  .step { position: relative; }
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: rgba(156,207,156,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .step-desc {
+    font-size: 0.88rem; font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  /* ZONE TYPES */
+  .zones {
+    padding: 100px 48px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .zone-card {
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid;
+  }
+  .zone-card-poi {
+    background: rgba(0,188,212,0.06);
+    border-color: rgba(0,188,212,0.2);
+  }
+  .zone-card-caution {
+    background: rgba(232,160,32,0.06);
+    border-color: rgba(232,160,32,0.2);
+  }
+  .zone-card-travel {
+    background: rgba(45,106,45,0.06);
+    border-color: rgba(45,106,45,0.2);
+  }
+  .zone-indicator {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .zone-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid;
+    flex-shrink: 0;
+  }
+  .zone-dot-poi { border-color: #00BCD4; background: rgba(0,188,212,0.2); }
+  .zone-dot-caution { border-color: var(--amber); background: rgba(232,160,32,0.2); }
+  .zone-dot-travel { border-color: var(--green-mid); background: rgba(45,106,45,0.2); }
+  .zone-type-label {
+    font-size: 0.75rem; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .zone-type-poi { color: #00BCD4; }
+  .zone-type-caution { color: var(--amber); }
+  .zone-type-travel { color: var(--green-mid); }
+  .zone-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--green-dark); margin-bottom: 8px;
+  }
+  .zone-card-desc {
+    font-size: 0.88rem; color: var(--text-muted);
+    line-height: 1.6; font-weight: 300;
+  }
+
+  /* THEMES */
+  .themes {
+    background: #F0F5EC;
+    padding: 100px 48px;
+  }
+  .themes-inner { max-width: 1100px; margin: 0 auto; }
+  .themes-grid {
+    display: flex; gap: 20px; margin-top: 48px;
+    overflow-x: auto; padding-bottom: 8px;
+  }
+  .theme-pill {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.08);
+    white-space: nowrap;
+    font-size: 0.88rem; font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .theme-pill:hover { transform: translateY(-2px); }
+  .theme-swatch {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .theme-green { background: #EAF3DE; color: var(--green-dark); }
+  .theme-green .theme-swatch { background: var(--green-mid); }
+  .theme-dark { background: #2B3A4A; color: #6AABDF; }
+  .theme-dark .theme-swatch { background: #6AABDF; }
+  .theme-amber { background: #1A1A1A; color: var(--amber); }
+  .theme-amber .theme-swatch { background: var(--amber); }
+  .theme-default-badge {
+    background: var(--green-mid);
+    color: white;
+    font-size: 0.65rem; font-weight: 500;
+    padding: 2px 8px; border-radius: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 120px 48px;
+    text-align: center;
+    background: var(--off-white);
+  }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  .cta p {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--text-muted); margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .cta-badges {
+    display: flex; justify-content: center; gap: 20px;
+    flex-wrap: wrap; margin-top: 24px;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.8rem; color: var(--text-muted);
+  }
+  .badge::before { content: "✓"; color: var(--green-light); font-weight: 700; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-dark);
+    padding: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white);
+  }
+  .footer-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; min-height: auto; }
+    .hero-visual { display: none; }
+    .stats-bar { padding: 28px 24px; gap: 40px; }
+    .features, .zones, .cta { padding: 72px 24px; }
+    .how { padding: 72px 24px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-shield" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="8" fill="#2D6A2D"/>
+      <path d="M17 5L27 9.5V19Q27 25 17 28Q7 25 7 19V9.5Z" fill="white" opacity="0.9"/>
+      <circle cx="17" cy="17" r="4.5" fill="#2D6A2D"/>
+      <path d="M17 21.5L12 17Q9.5 13.5 17 11Q24.5 13.5 22 17Z" fill="#2D6A2D"/>
+      <circle cx="17" cy="17" r="2" fill="white"/>
+    </svg>
+    <span class="nav-wordmark">Travel Safe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="#download" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Live Emergency Intelligence
+    </div>
+    <h1>Know before<br><em>danger arrives.</em></h1>
+    <p class="hero-sub">Real-time emergency zone intelligence for travellers, expats, and anyone who needs to know what's happening — sourced from embassies, government advisories, and trusted news feeds.</p>
+    <div class="hero-actions">
+      <a href="#download" class="btn-primary" id="download">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.37.21.8.22 1.17.04L20.8 14.96c.4-.22.64-.63.64-1.08s-.24-.86-.64-1.08L4.35.16C3.98-.02 3.55-.01 3.18.2c-.38.22-.6.62-.6 1.06v21.44c0 .44.22.84.6 1.06z"/></svg>
+        Download on Google Play
+      </a>
+      <span class="hero-note">Free to download</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-map"></div>
+        <div class="phone-map-lines"></div>
+        <div class="phone-status">
+          <span class="phone-time">9:41</span>
+          <span class="phone-icons">●●●</span>
+        </div>
+        <div class="phone-header">
+          <span class="phone-app-name">TRAVEL SAFE</span>
+          <div class="phone-safe-dot"></div>
+        </div>
+        <div class="zone-circle zone-amber"></div>
+        <div class="zone-circle zone-red"></div>
+        <div class="zone-circle zone-green"></div>
+        <div class="phone-alert">
+          <div class="phone-alert-title">⚠ CAUTION ZONE ACTIVE</div>
+          <div class="phone-alert-body">Civil unrest reported near city centre. Avoid non-essential travel to this area.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-number">195+</span>
+    <span class="stat-label">Countries Monitored</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">24/7</span>
+    <span class="stat-label">Live Intelligence</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">3</span>
+    <span class="stat-label">Zone Severity Levels</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">Free</span>
+    <span class="stat-label">To Download</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <p class="section-label">What Travel Safe does</p>
+  <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🗺</div>
+      <div class="feature-title">Live Zone Map</div>
+      <p class="feature-desc">See active emergency zones overlaid on a live map. Colour-coded by severity so you can understand risk at a glance, wherever you are in the world.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <div class="feature-title">Instant Push Alerts</div>
+      <p class="feature-desc">Receive notifications the moment a new emergency zone is activated in your monitored region. Know before the situation escalates.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <div class="feature-title">I'm Safe Alerts</div>
+      <p class="feature-desc">Let your loved ones know you're okay with one tap. Sends an SMS to your emergency contacts instantly — no app required on their end.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏛</div>
+      <div class="feature-title">Embassy Finder</div>
+      <p class="feature-desc">Locate your nearest embassy instantly from anywhere in the world. Access contact information, travel advisories, and security alerts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">Alert History</div>
+      <p class="feature-desc">Review past emergency events in any region. Essential for pre-trip research — understand a destination's risk profile before you arrive.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <div class="feature-title">Sourced Intelligence</div>
+      <p class="feature-desc">Every alert shows exactly where the information came from — government advisories, humanitarian organisations, verified field reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">Up and running in under a minute.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-title">Download the app</div>
+        <p class="step-desc">Free on Google Play. No credit card required. Open and explore immediately in guest mode — no account needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-title">Enable alerts</div>
+        <p class="step-desc">Allow push notifications and select your first region to monitor. Travel Safe starts watching for you immediately.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-title">Add your contacts</div>
+        <p class="step-desc">Set up your emergency contacts for the I'm Safe feature. Pick from your phone's contact list in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <div class="step-title">Travel with confidence</div>
+        <p class="step-desc">Travel Safe runs quietly in the background and alerts you the moment something changes in your monitored region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE TYPES -->
+<section class="zones">
+  <p class="section-label">Zone Intelligence</p>
+  <h2 class="section-title">Three levels of clarity.</h2>
+  <div class="zones-grid">
+    <div class="zone-card zone-card-poi">
+      <div class="zone-indicator">
+        <div class="zone-dot zone-dot-poi"></div>
+        <span class="zone-type-label zone-type-poi">Points of Interest</span>
+      </div>
+      <div class="zone-card-title">Know What's Around You</div>
+      <p class="zone-card-desc">Informational zones highlighting significant locations, events, or areas of note in your region. Awareness without alarm.</p>
+    </div>
+    <div class="zone-card zone-card-caution">
+      <div class="zone-indicator">
+        <div class="zone-dot zone-dot-caution"></div>
+        <span class="zone-type-label zone-type-caution">Exercise Caution</span>
+      </div>
+      <div class="zone-card-title">Heightened Awareness</div>
+      <p class="zone-card-desc">Active situations requiring your attention. Civil unrest, natural events, security incidents — know before you enter.</p>
+    </div>
+    <div class="zone-card zone-card-travel">
+      <div class="zone-indicator">
+        <div class="zone-dot zone-dot-travel"></div>
+        <span class="zone-type-label zone-type-travel">Recommended Travel</span>
+      </div>
+      <div class="zone-card-title">Verified Safe Routes</div>
+      <p class="zone-card-desc">Recommended corridors and zones for safe movement during active emergency situations in your region.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section class="themes">
+  <div class="themes-inner">
+    <p class="section-label">Personalisation</p>
+    <h2 class="section-title">Your app, your way.</h2>
+    <p style="color:var(--text-muted); font-weight:300; max-width:480px; line-height:1.7; margin-bottom:8px;">Three fully supported display themes. Switch anytime in settings.</p>
+    <div class="themes-grid">
+      <div class="theme-pill theme-green">
+        <div class="theme-swatch"></div>
+        Forest Green
+        <span class="theme-default-badge">Default</span>
+      </div>
+      <div class="theme-pill theme-dark">
+        <div class="theme-swatch"></div>
+        Dark Blue
+      </div>
+      <div class="theme-pill theme-amber">
+        <div class="theme-swatch"></div>
+        Night Amber
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Stay safe.<br>Stay informed.</h2>
+    <p>Join travellers, expats, and safety-conscious people worldwide who trust Travel Safe to watch over the places that matter most to them.</p>
+    <a href="#download" class="btn-primary" style="display:inline-flex;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.37.21.8.22 1.17.04L20.8 14.96c.4-.22.64-.63.64-1.08s-.24-.86-.64-1.08L4.35.16C3.98-.02 3.55-.01 3.18.2c-.38.22-.6.62-.6 1.06v21.44c0 .44.22.84.6 1.06z"/></svg>
+      Download Free on Google Play
+    </a>
+    <div class="cta-badges">
+      <span class="badge">Free to download</span>
+      <span class="badge">No account required</span>
+      <span class="badge">Global coverage</span>
+      <span class="badge">Real-time alerts</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Travel Safe</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Travel Safe. All rights reserved. Travel Safe is an informational tool. Always follow guidance from local authorities in emergency situations.</p>
+</footer>
+
+</body>
+</html>

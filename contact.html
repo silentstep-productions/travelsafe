@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Travel Safe</title>
+<meta name="description" content="Get in touch with the Travel Safe team for support, feedback, or partnership enquiries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1A3D1A; --green-mid: #2D6A2D; --green-light: #5A9E5A;
+    --green-pale: #EAF3DE; --green-glow: #9CCF9C; --amber: #E8A020;
+    --white: #FFFFFF; --off-white: #F7FAF4; --text: #1A1A1A; --text-muted: #5A6B5A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(247,250,244,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(45,106,45,0.1);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-mid); }
+  .nav-cta { background: var(--green-mid) !important; color: var(--white) !important; padding: 8px 20px !important; border-radius: 24px !important; font-weight: 500 !important; }
+  .page-hero {
+    padding: 160px 48px 80px;
+    background: var(--green-dark); position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .page-hero-inner { max-width: 680px; position: relative; z-index: 2; }
+  .page-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--green-glow); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .page-hero p { font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 520px; }
+  .contact-grid {
+    max-width: 1000px; margin: 0 auto;
+    padding: 80px 48px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px;
+    align-items: start;
+  }
+  .contact-info h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--green-dark); margin-bottom: 16px; }
+  .contact-info p { font-size: 0.95rem; font-weight: 300; color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; }
+  .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+  .channel {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--white); border: 1px solid rgba(45,106,45,0.1);
+    border-radius: 14px; padding: 18px 20px;
+  }
+  .channel-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .channel-title { font-size: 0.88rem; font-weight: 500; color: var(--green-dark); margin-bottom: 3px; }
+  .channel-detail { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); }
+  .channel-detail a { color: var(--green-mid); text-decoration: none; }
+  .contact-form-wrap {
+    background: var(--white); border: 1px solid rgba(45,106,45,0.1);
+    border-radius: 20px; padding: 40px;
+  }
+  .contact-form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--green-dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 0.83rem; font-weight: 500; color: var(--green-dark); margin-bottom: 6px; letter-spacing: 0.3px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid rgba(45,106,45,0.2);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem; font-weight: 300;
+    color: var(--text); background: var(--off-white);
+    outline: none; transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--green-mid);
+    background: var(--white);
+  }
+  .form-group textarea { min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .btn-submit {
+    width: 100%; padding: 13px;
+    background: var(--green-dark); color: var(--white);
+    border: none; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .form-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 12px; font-weight: 300; }
+  footer { background: var(--green-dark); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 40px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); width: 100%; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; } .nav-links { display: none; }
+    .page-hero { padding: 120px 24px 60px; }
+    .contact-grid { grid-template-columns: 1fr; padding: 48px 24px; gap: 40px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#2D6A2D"/><path d="M17 5L27 9.5V19Q27 25 17 28Q7 25 7 19V9.5Z" fill="white" opacity="0.9"/><circle cx="17" cy="17" r="4.5" fill="#2D6A2D"/><path d="M17 21.5L12 17Q9.5 13.5 17 11Q24.5 13.5 22 17Z" fill="#2D6A2D"/><circle cx="17" cy="17" r="2" fill="white"/></svg>
+    <span class="nav-wordmark">Travel Safe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="index.html#download" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Get in Touch</p>
+    <h1>We're here to help.</h1>
+    <p>Questions, feedback, partnership enquiries, or data inaccuracy reports — we read and respond to everything.</p>
+  </div>
+</section>
+
+<div class="contact-grid">
+  <div class="contact-info">
+    <h2>How to reach us</h2>
+    <p>Travel Safe is an independently built app. We take every message seriously and aim to respond within 48 hours.</p>
+    <div class="contact-channels">
+      <div class="channel">
+        <div class="channel-icon">✉️</div>
+        <div>
+          <div class="channel-title">General Support</div>
+          <div class="channel-detail"><a href="mailto:support@travelsafeapp.com">support@travelsafeapp.com</a></div>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">🏢</div>
+        <div>
+          <div class="channel-title">B2B & Team Enquiries</div>
+          <div class="channel-detail">For NGOs, organisations, or teams looking for multi-user plans — use the form and select Business enquiry.</div>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">⚠️</div>
+        <div>
+          <div class="channel-title">Report Inaccurate Data</div>
+          <div class="channel-detail">Spotted a zone that's wrong or outdated? Use the form and select Data report. We investigate within 24 hours.</div>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="channel-icon">🤝</div>
+        <div>
+          <div class="channel-title">Partnerships</div>
+          <div class="channel-detail">Travel insurance providers, NGO platforms, or media organisations — we're open to partnerships that serve user safety.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form-wrap">
+    <h3>Send us a message</h3>
+    <form action="mailto:support@travelsafeapp.com" method="get" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Enquiry type</label>
+        <select id="subject" name="subject">
+          <option value="">Select a topic</option>
+          <option value="Support">App support</option>
+          <option value="Data Report">Report inaccurate data</option>
+          <option value="Business Enquiry">Business / team enquiry</option>
+          <option value="Partnership">Partnership</option>
+          <option value="Feedback">General feedback</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="body" placeholder="Tell us what's on your mind..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p class="form-note">We typically respond within 48 hours. For urgent safety matters always contact local emergency services first.</p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Travel Safe</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Travel Safe. All rights reserved.</p>
+</footer>
+</body>
+</html>

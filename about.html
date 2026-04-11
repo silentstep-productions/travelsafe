@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Travel Safe</title>
+<meta name="description" content="Travel Safe was built to give every traveller access to the same emergency intelligence that large organisations pay thousands for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1A3D1A; --green-mid: #2D6A2D; --green-light: #5A9E5A;
+    --green-pale: #EAF3DE; --green-glow: #9CCF9C; --amber: #E8A020;
+    --white: #FFFFFF; --off-white: #F7FAF4; --text: #1A1A1A; --text-muted: #5A6B5A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(247,250,244,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(45,106,45,0.1);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-mid); }
+  .nav-cta { background: var(--green-mid) !important; color: var(--white) !important; padding: 8px 20px !important; border-radius: 24px !important; font-weight: 500 !important; }
+  .page-hero {
+    padding: 160px 48px 80px;
+    background: var(--green-dark);
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .page-hero-inner { max-width: 680px; position: relative; z-index: 2; }
+  .page-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--green-glow); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .page-hero p { font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 520px; }
+  .content { max-width: 780px; margin: 0 auto; padding: 80px 48px; }
+  .content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--green-dark); margin: 48px 0 16px; }
+  .content h2:first-child { margin-top: 0; }
+  .content p { font-size: 1rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+  .content p strong { font-weight: 500; color: var(--text); }
+  .mission-card {
+    background: var(--green-dark); color: var(--white);
+    border-radius: 20px; padding: 48px;
+    margin: 48px 0;
+    position: relative; overflow: hidden;
+  }
+  .mission-card::before {
+    content: '"';
+    position: absolute; top: -20px; left: 32px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px; color: rgba(255,255,255,0.06);
+    line-height: 1;
+  }
+  .mission-card p { color: rgba(255,255,255,0.85); font-size: 1.15rem; line-height: 1.75; margin: 0; font-weight: 300; }
+  .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 32px; }
+  .value-card { background: var(--white); border: 1px solid rgba(45,106,45,0.1); border-radius: 16px; padding: 28px 24px; }
+  .value-icon { font-size: 24px; margin-bottom: 12px; }
+  .value-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+  .value-desc { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+  footer { background: var(--green-dark); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); width: 100%; }
+  @media (max-width: 768px) { nav { padding: 16px 24px; } .nav-links { display: none; } .page-hero { padding: 120px 24px 60px; } .content { padding: 60px 24px; } footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#2D6A2D"/><path d="M17 5L27 9.5V19Q27 25 17 28Q7 25 7 19V9.5Z" fill="white" opacity="0.9"/><circle cx="17" cy="17" r="4.5" fill="#2D6A2D"/><path d="M17 21.5L12 17Q9.5 13.5 17 11Q24.5 13.5 22 17Z" fill="#2D6A2D"/><circle cx="17" cy="17" r="2" fill="white"/></svg>
+    <span class="nav-wordmark">Travel Safe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="index.html#download" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Our Story</p>
+    <h1>Built for the traveller who deserves better.</h1>
+    <p>Emergency intelligence has always existed — it just wasn't accessible to everyone. Travel Safe changes that.</p>
+  </div>
+</section>
+
+<div class="content">
+  <h2>Why Travel Safe exists</h2>
+  <p>Large organisations — corporations, governments, major NGOs — have always had access to real-time emergency intelligence. They pay thousands of dollars a month for platforms that tell them exactly what's happening in every corner of the world, before it makes the news.</p>
+  <p>Individual travellers, expats, journalists, missionaries, aid workers, and families with loved ones abroad had nothing comparable. They relied on news alerts that arrived too late, or government travel advisories updated too infrequently to be useful in a fast-moving situation.</p>
+  <p><strong>Travel Safe was built to close that gap.</strong> The same quality of emergency zone intelligence, available to anyone with a smartphone, free to download.</p>
+
+  <div class="mission-card">
+    <p>Every person travelling the world deserves the same situational awareness that large organisations take for granted. Safety intelligence should not be a luxury.</p>
+  </div>
+
+  <h2>What we believe</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <div class="value-title">Accuracy first</div>
+      <p class="value-desc">Every alert shows its source. We never publish intelligence we cannot attribute to a credible origin.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">⚡</div>
+      <div class="value-title">Speed matters</div>
+      <p class="value-desc">In an emergency, minutes count. Travel Safe is built to get verified intelligence to you before the situation escalates.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔒</div>
+      <div class="value-title">Privacy by design</div>
+      <p class="value-desc">We collect only what we need. We never sell your data. Your safety information is yours.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌍</div>
+      <div class="value-title">Truly global</div>
+      <p class="value-desc">Coverage across 195 countries from day one. Whether you're in Bangkok or Bogotá, Travel Safe is watching.</p>
+    </div>
+  </div>
+
+  <h2>Who Travel Safe is for</h2>
+  <p>Travel Safe was designed for anyone whose safety depends on knowing what's happening around them. That includes solo travellers navigating unfamiliar regions, expats living abroad who want to monitor both their home country and where they live now, families wanting to know their loved ones overseas are safe, NGO and humanitarian field workers who need affordable team safety tools, journalists and photographers working in complex environments, and missionaries and volunteers operating in regions without established safety infrastructure.</p>
+  <p>If the places you care about are scattered across the world, Travel Safe is for you.</p>
+</div>
+
+<footer>
+  <div class="footer-logo">Travel Safe</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Travel Safe. All rights reserved.</p>
+</footer>
+</body>
+</html>
