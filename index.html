@@ -759,7 +759,7 @@
   <div class="themes-inner">
     <p class="section-label">Personalisation</p>
     <h2 class="section-title">Your app, your way.</h2>
-    <p style="color:var(--text-muted); font-weight:300; max-width:480px; line-height:1.7; margin-bottom:8px;">Three fully supported display themes. Switch anytime in settings.</p>
+    <p style="color:var(--text-muted); font-weight:300; max-width:480px; line-height:1.7; margin-bottom:8px;">Two fully supported display themes. Switch anytime in settings.</p>
     <div class="themes-grid">
       <div class="theme-pill theme-green">
         <div class="theme-swatch"></div>
@@ -770,13 +770,93 @@
         <div class="theme-swatch"></div>
         Dark Blue
       </div>
-      <div class="theme-pill theme-amber">
+      <div class="theme-pill theme-amber" style="opacity:0.45; cursor:default; position:relative;">
         <div class="theme-swatch"></div>
         Night Amber
+        <span style="
+          background:#E8A020; color:#1A1A1A;
+          font-size:0.62rem; font-weight:700;
+          padding:2px 8px; border-radius:20px;
+          letter-spacing:0.5px;
+        ">COMING SOON</span>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ANIMATION -->
+<section style="background:#1A3D1A; padding:0; overflow:hidden;">
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 48px 48px;">
+    <div style="
+      display:flex; align-items:center; justify-content:center;
+      width:100%; height:160px;
+    ">
+      <div style="
+        display:flex; align-items:center;
+        font-family:'Courier New',monospace;
+        font-size:clamp(32px,5vw,56px);
+        font-weight:700; letter-spacing:3px;
+        line-height:1; white-space:nowrap;
+      ">
+        <span id="twText"></span><span id="twCursor" style="
+          display:inline-block; width:4px; height:clamp(36px,5vw,60px);
+          background:#E8A020; margin-left:4px; vertical-align:middle;
+          animation:tsBlink 0.75s step-end infinite;
+        "></span>
+      </div>
+    </div>
+    <div id="twTag" style="
+      font-family:Arial,sans-serif; font-size:13px;
+      letter-spacing:5px; color:rgba(156,207,156,0.7);
+      text-align:center; opacity:0;
+      transition:opacity 0.6s ease;
+    ">STAY SAFE. STAY INFORMED.</div>
+  </div>
+</section>
+<style>
+  @keyframes tsBlink {
+    0%,100%{opacity:1} 50%{opacity:0}
+  }
+</style>
+<script>
+(function(){
+  function buildSequence(){
+    var words=['READY','ALERT','INFORMED','FUN','HAPPY','SAFE'];
+    var finalColor='#9CCF9C';
+    var seq=[];
+    words.forEach(function(word,wi){
+      var color=wi===words.length-1?finalColor:'#E8A020';
+      for(var c=1;c<=word.length;c++) seq.push({partial:word.slice(0,c),color:color});
+      seq.push({pause:wi===words.length-1?600:1100});
+      if(wi<words.length-1){
+        for(var e=word.length-1;e>=0;e--) seq.push({partial:word.slice(0,e),color:color,erase:true});
+      }
+    });
+    seq.push({done:true});
+    return seq;
+  }
+  var el=document.getElementById('twText');
+  var tag=document.getElementById('twTag');
+  var seq=buildSequence();
+  var idx=0;
+  var fs='clamp(32px,5vw,56px)';
+  function render(partial,color){
+    el.innerHTML=
+      '<span style="color:#FFFFFF;font-family:\'Courier New\',monospace;font-size:'+fs+';font-weight:700;letter-spacing:3px;">TRAVEL </span>'+
+      '<span style="color:'+color+';font-family:\'Courier New\',monospace;font-size:'+fs+';font-weight:700;letter-spacing:3px;">'+partial+'</span>';
+  }
+  function run(){
+    if(idx>=seq.length)return;
+    var s=seq[idx++];
+    if(s.done){tag.style.opacity='1';return;}
+    if(s.pause){setTimeout(run,s.pause);return;}
+    render(s.partial,s.color);
+    setTimeout(run,s.erase?80:160);
+  }
+  render('','#E8A020');
+  setTimeout(run,1400);
+})();
+</script>
 
 <!-- CTA -->
 <section class="cta">

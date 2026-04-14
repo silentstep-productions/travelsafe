@@ -139,7 +139,7 @@
         <div class="channel-icon">✉️</div>
         <div>
           <div class="channel-title">General Support</div>
-          <div class="channel-detail"><a href="mailto:travelsafesupport@gmail.com">travelsafesupport@gmail.com</a></div>
+          <div class="channel-detail"><a href="/cdn-cgi/l/email-protection#f480869582919887959291878184849b8680b49399959d98da979b99"><span class="__cf_email__" data-cfemail="d9adabb8afbcb5aab8bfbcaaaca9a9b6abad99beb4b8b0b5f7bab6b4">[email&#160;protected]</span></a></div>
         </div>
       </div>
       <div class="channel">
@@ -168,15 +168,20 @@
 
   <div class="contact-form-wrap">
     <h3>Send us a message</h3>
-    <form action="mailto:travelsafesupport@gmail.com" method="get" enctype="text/plain">
+    <div id="formSuccess" style="display:none; text-align:center; padding:40px 0;">
+      <div style="font-size:48px; margin-bottom:16px;">✅</div>
+      <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Message sent.</p>
+      <p style="font-size:0.9rem; font-weight:300; color:var(--text-muted);">We'll get back to you within 48 hours at <strong>travelsafesupport@gmail.com</strong>.</p>
+    </div>
+    <form id="contactForm" action="https://formspree.io/f/travelsafesupport@gmail.com" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Your name</label>
-          <input type="text" id="name" name="name" placeholder="Jane Smith">
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="jane@example.com">
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required>
         </div>
       </div>
       <div class="form-group">
@@ -193,12 +198,41 @@
       </div>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="body" placeholder="Tell us what's on your mind..."></textarea>
+        <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
       </div>
-      <button type="submit" class="btn-submit">Send Message</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
       <p class="form-note">We typically respond within 48 hours. For urgent safety matters always contact local emergency services first.</p>
     </form>
   </div>
+
+<script>
+  var form = document.getElementById('contactForm');
+  var btn  = document.getElementById('submitBtn');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please email us directly at travelsafesupport@gmail.com');
+      }
+    }).catch(function(){
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at travelsafesupport@gmail.com');
+    });
+  });
+</script>
 </div>
 
 <footer>
@@ -207,9 +241,4 @@
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="terms.html">Terms of Service</a></li>
-  </ul>
-  <p class="footer-copy">© 2026 Travel Safe. All rights reserved.</p>
-</footer>
-</body>
-</html>
+    <li><

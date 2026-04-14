@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Travel Safe</title>
+<meta name="description" content="Travel Safe Terms of Service — the legal agreement governing your use of the Travel Safe app and website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1A3D1A; --green-mid: #2D6A2D; --green-light: #5A9E5A;
+    --green-pale: #EAF3DE; --green-glow: #9CCF9C; --amber: #E8A020;
+    --white: #FFFFFF; --off-white: #F7FAF4; --text: #1A1A1A; --text-muted: #5A6B5A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(247,250,244,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(45,106,45,0.1);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-mid); }
+  .nav-cta { background: var(--green-mid) !important; color: var(--white) !important; padding: 8px 20px !important; border-radius: 24px !important; font-weight: 500 !important; }
+
+  .page-hero {
+    padding: 160px 48px 80px;
+    background: var(--green-dark); position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .page-hero-inner { max-width: 680px; position: relative; z-index: 2; }
+  .page-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--green-glow); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .page-hero p { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 520px; }
+  .effective-badge {
+    display: inline-block; margin-top: 20px;
+    background: rgba(156,207,156,0.15); border: 1px solid rgba(156,207,156,0.3);
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 0.8rem; color: var(--green-glow); font-weight: 400;
+  }
+
+  .toc-wrap { max-width: 900px; margin: 0 auto; padding: 48px 48px 0; }
+  .toc { background: var(--white); border: 1px solid rgba(45,106,45,0.12); border-radius: 16px; padding: 32px 36px; }
+  .toc h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 16px; }
+  .toc ol { padding-left: 20px; columns: 2; gap: 24px; }
+  .toc li { margin-bottom: 8px; }
+  .toc a { font-size: 0.88rem; color: var(--green-mid); text-decoration: none; font-weight: 400; line-height: 1.5; }
+  .toc a:hover { text-decoration: underline; }
+
+  .content { max-width: 900px; margin: 0 auto; padding: 48px 48px 80px; }
+  .policy-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+  .section-number { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 2px; color: var(--green-light); text-transform: uppercase; margin-bottom: 10px; }
+  .policy-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--green-dark); margin-bottom: 18px; line-height: 1.3; }
+  .policy-section p { font-size: 0.97rem; font-weight: 300; color: var(--text-muted); line-height: 1.85; margin-bottom: 14px; }
+  .policy-section p strong { font-weight: 500; color: var(--text); }
+  .policy-section ul, .policy-section ol { padding-left: 22px; margin-bottom: 14px; }
+  .policy-section li { font-size: 0.97rem; font-weight: 300; color: var(--text-muted); line-height: 1.75; margin-bottom: 10px; }
+  .policy-section li strong { font-weight: 500; color: var(--text); }
+
+  .highlight-box { border-radius: 12px; padding: 20px 24px; margin: 20px 0; border-left: 4px solid; }
+  .highlight-box.warning { background: rgba(232,160,32,0.07); border-color: var(--amber); }
+  .highlight-box.info { background: rgba(45,106,45,0.06); border-color: var(--green-mid); }
+  .highlight-box.critical { background: rgba(192,57,43,0.05); border-color: #C0392B; }
+  .highlight-box p { margin: 0; font-size: 0.92rem !important; font-weight: 400 !important; color: var(--text) !important; line-height: 1.7 !important; }
+  .highlight-box strong { font-weight: 600 !important; }
+
+  .section-divider { border: none; border-top: 1px solid rgba(45,106,45,0.1); margin: 48px 0; }
+
+  .contact-card { background: var(--green-dark); border-radius: 16px; padding: 32px 36px; color: var(--white); margin-top: 20px; }
+  .contact-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; }
+  .contact-card p { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 8px; }
+  .contact-card a { color: var(--green-glow); text-decoration: none; }
+
+  footer { background: var(--green-dark); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); width: 100%; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; } .nav-links { display: none; }
+    .page-hero { padding: 120px 24px 60px; }
+    .toc-wrap { padding: 32px 24px 0; }
+    .toc ol { columns: 1; }
+    .content { padding: 32px 24px 60px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#2D6A2D"/><path d="M17 5L27 9.5V19Q27 25 17 28Q7 25 7 19V9.5Z" fill="white" opacity="0.9"/><circle cx="17" cy="17" r="4.5" fill="#2D6A2D"/><path d="M17 21.5L12 17Q9.5 13.5 17 11Q24.5 13.5 22 17Z" fill="#2D6A2D"/><circle cx="17" cy="17" r="2" fill="white"/></svg>
+    <span class="nav-wordmark">Travel Safe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="index.html#download" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Legal</p>
+    <h1>Terms of Service</h1>
+    <p>Please read these Terms carefully before using Travel Safe. By downloading or using the App, you agree to be bound by these Terms.</p>
+    <span class="effective-badge">Effective Date: April 11, 2026 · Version 1.0</span>
+  </div>
+</section>
+
+<div class="toc-wrap">
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#t1">Acceptance of Terms</a></li>
+      <li><a href="#t2">Description of Service</a></li>
+      <li><a href="#t3">Eligibility</a></li>
+      <li><a href="#t4">User Accounts</a></li>
+      <li><a href="#t5">Acceptable Use</a></li>
+      <li><a href="#t6">Community Zone Submissions</a></li>
+      <li><a href="#t7">Subscription and Billing</a></li>
+      <li><a href="#t8">Informational Nature of the Service</a></li>
+      <li><a href="#t9">Disclaimer of Warranties</a></li>
+      <li><a href="#t10">Limitation of Liability</a></li>
+      <li><a href="#t11">Indemnification</a></li>
+      <li><a href="#t12">Intellectual Property</a></li>
+      <li><a href="#t13">Third-Party Services</a></li>
+      <li><a href="#t14">Modifications and Termination</a></li>
+      <li><a href="#t15">Governing Law and Disputes</a></li>
+      <li><a href="#t16">Severability and Entire Agreement</a></li>
+      <li><a href="#t17">Contact Us</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- T1 -->
+  <div class="policy-section" id="t1">
+    <span class="section-number">Section 01</span>
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, accessing, or using Travel Safe (the "App"), you confirm that you have read, understood, and agree to be legally bound by these Terms of Service ("Terms") and our <a href="privacy.html" style="color:var(--green-mid)">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+    <p>If you do not agree to these Terms in their entirety, you must not download, install, or use the App.</p>
+    <p>These Terms constitute a legally binding agreement between you and the individual developer operating Travel Safe ("we", "us", "our"). If you are using the App on behalf of an organisation, you represent that you have authority to bind that organisation to these Terms.</p>
+    <div class="highlight-box info">
+      <p><strong>By continuing to use Travel Safe after any updates to these Terms are posted, you accept the updated Terms.</strong> We will notify you of material changes through the App.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T2 -->
+  <div class="policy-section" id="t2">
+    <span class="section-number">Section 02</span>
+    <h2>Description of Service</h2>
+    <p>Travel Safe is a mobile application that provides users with access to emergency zone intelligence, travel advisories, and safety information aggregated from publicly available government and institutional sources. Core features include:</p>
+    <ul>
+      <li>A live map displaying emergency zones sourced from government advisories and verified public reports</li>
+      <li>Push notifications for emergency events in user-selected regions</li>
+      <li>An I'm Safe SMS alert feature for notifying personal emergency contacts</li>
+      <li>US Embassy finder and travel advisory information</li>
+      <li>Community zone submission tools (subject to moderation)</li>
+    </ul>
+    <p>The App is available free of charge with optional premium subscription features. Travel Safe is available on Android via Google Play.</p>
+    <div class="highlight-box warning">
+      <p><strong>Travel Safe is an informational reference tool only.</strong> It does not connect you to emergency services, does not guarantee alert delivery in all circumstances, and is not a substitute for official emergency services or professional security advice. See Section 8 for full details.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T3 -->
+  <div class="policy-section" id="t3">
+    <span class="section-number">Section 03</span>
+    <h2>Eligibility</h2>
+    <p>You must be at least 13 years of age (or 16 in the EEA where applicable) to use Travel Safe. By using the App, you represent and warrant that you meet this age requirement.</p>
+    <p>If you are under 18, you represent that you have obtained parental or guardian consent to use the App and that your parent or guardian has agreed to these Terms on your behalf.</p>
+    <p>Travel Safe is not available in jurisdictions where its use would violate applicable law. By using the App, you represent that your use complies with all laws applicable to you.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T4 -->
+  <div class="policy-section" id="t4">
+    <span class="section-number">Section 04</span>
+    <h2>User Accounts</h2>
+    <p>You may use Travel Safe in guest mode without creating an account. If you choose to create an account via Google OAuth, you agree to:</p>
+    <ul>
+      <li>Provide accurate, current, and complete information as part of the sign-in process</li>
+      <li>Maintain the security of your Google account credentials, which are used to authenticate your Travel Safe account</li>
+      <li>Notify us immediately at travelsafesupport@gmail.com if you become aware of any unauthorised use of your account</li>
+      <li>Accept responsibility for all activity that occurs under your account</li>
+    </ul>
+    <p>We reserve the right to suspend or permanently terminate accounts that violate these Terms, submit false or harmful content, or engage in any conduct we determine to be harmful to users, the platform, or third parties. We will endeavour to provide notice of suspension or termination where practicable, but reserve the right to act immediately where necessary to protect the platform or its users.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T5 -->
+  <div class="policy-section" id="t5">
+    <span class="section-number">Section 05</span>
+    <h2>Acceptable Use</h2>
+    <p>You agree to use Travel Safe only for lawful purposes and in a manner consistent with these Terms. You agree that you will not:</p>
+    <ul>
+      <li>Submit false, fabricated, or misleading emergency information or zone data</li>
+      <li>Use the App to deliberately cause alarm, panic, or distress to other users or the public</li>
+      <li>Attempt to gain unauthorised access to our servers, database, or any other user's account</li>
+      <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the App</li>
+      <li>Reproduce, duplicate, copy, sell, resell, or exploit any part of the App or its content for commercial purposes without our prior written consent</li>
+      <li>Use the App to transmit malicious code, spam, or unsolicited communications</li>
+      <li>Circumvent, disable, or interfere with any security features or access controls</li>
+      <li>Use automated tools to scrape, crawl, or collect data from the App</li>
+      <li>Use the App in any way that could impair, damage, or place unreasonable load on our infrastructure</li>
+      <li>Violate any applicable local, national, or international law or regulation</li>
+    </ul>
+    <p>Violation of these provisions may result in immediate account termination and, where applicable, reporting to law enforcement authorities.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T6 -->
+  <div class="policy-section" id="t6">
+    <span class="section-number">Section 06</span>
+    <h2>Community Zone Submissions</h2>
+    <p>Logged-in users and guest users may submit zone data through the App's drawing tool. By submitting a zone, you agree to the following:</p>
+    <ul>
+      <li><strong>Accuracy:</strong> You represent that the information you submit is accurate to the best of your knowledge and is not fabricated, misleading, or intended to cause alarm</li>
+      <li><strong>Moderation:</strong> All guest-submitted zones are routed to a pending queue for review by Travel Safe administrators before publication. We reserve the right to reject, modify, or remove any submission at our sole discretion</li>
+      <li><strong>Licence:</strong> By submitting a zone, you grant Travel Safe a perpetual, royalty-free, worldwide licence to use, display, modify, and distribute that content within the App and platform</li>
+      <li><strong>No liability:</strong> Travel Safe is not responsible for the accuracy or consequences of user-submitted zone data. Users who rely on community-submitted zones do so at their own risk</li>
+    </ul>
+    <p>Submitting deliberately false emergency zone data may constitute a criminal offence in some jurisdictions and will result in immediate account termination.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T7 -->
+  <div class="policy-section" id="t7">
+    <span class="section-number">Section 07</span>
+    <h2>Subscription and Billing</h2>
+    <p>Travel Safe offers optional premium subscription plans. All billing is processed exclusively by Google Play. By subscribing, you agree to the following:</p>
+    <ul>
+      <li>Subscriptions are governed by Google Play's payment terms and billing policies in addition to these Terms</li>
+      <li>Subscriptions automatically renew at the end of each billing period unless cancelled at least 24 hours before the renewal date</li>
+      <li>You may cancel your subscription at any time through your Google Play account settings. Cancellation takes effect at the end of the current billing period — you will retain access to premium features until that date</li>
+      <li>No refunds will be issued for unused portions of a subscription period, except where required by applicable consumer protection law in your jurisdiction</li>
+      <li>We reserve the right to modify subscription pricing. Existing subscribers will receive reasonable advance notice of any price changes. Your continued subscription after a price change constitutes acceptance of the new pricing</li>
+      <li>If a subscription payment fails, access to premium features may be suspended until payment is resolved</li>
+    </ul>
+    <p>Travel Safe does not process or store any payment card information. All financial transactions are handled entirely by Google Play.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T8 -->
+  <div class="policy-section" id="t8">
+    <span class="section-number">Section 08</span>
+    <h2>Informational Nature of the Service — Critical Limitation</h2>
+    <div class="highlight-box critical">
+      <p><strong>THIS SECTION IS CRITICAL. IT DEFINES THE NATURE AND LIMITS OF WHAT TRAVEL SAFE PROVIDES. PLEASE READ IT CAREFULLY BEFORE USING THE APP.</strong></p>
+    </div>
+    <p>Travel Safe aggregates and displays emergency intelligence sourced from publicly available third-party sources, including U.S. State Department travel advisories, embassy security notices, national emergency management agencies, humanitarian organisations, verified public news feeds, and community-submitted reports. <strong>Travel Safe does not generate, verify, or independently investigate any emergency intelligence.</strong></p>
+    <p>By using Travel Safe, you expressly acknowledge and accept the following limitations:</p>
+    <ul>
+      <li><strong>Not a replacement for emergency services:</strong> Travel Safe does not connect you to emergency services. In any life-threatening situation, contact your local emergency services immediately (e.g. 911 in the USA, 999 in the UK, 112 in the EU). Do not use Travel Safe as a substitute.</li>
+      <li><strong>No guarantee of delivery:</strong> Push notification delivery depends on internet connectivity, device settings, operating system behaviour, and third-party infrastructure. Travel Safe does not guarantee that alerts will reach you in all circumstances or in time to prevent harm.</li>
+      <li><strong>Information may be delayed or incomplete:</strong> Emergency situations evolve rapidly. Information in the App reflects what has been officially reported at the time of publication and may not reflect real-time conditions on the ground.</li>
+      <li><strong>Not professional security advice:</strong> Travel Safe is not a professional security assessment service. For high-risk travel, consult qualified security professionals and official government travel advisories directly.</li>
+      <li><strong>Use at your own risk:</strong> Any decision made or action taken based on information provided by Travel Safe is made entirely at your own risk. Travel Safe accepts no responsibility for consequences arising from reliance on information provided by the App.</li>
+    </ul>
+    <p>Always follow the instructions and guidance of local authorities, official emergency services, and your country's government travel advisories.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T9 -->
+  <div class="policy-section" id="t9">
+    <span class="section-number">Section 09</span>
+    <h2>Disclaimer of Warranties</h2>
+    <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, TRAVEL SAFE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
+    <ul>
+      <li>WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT</li>
+      <li>WARRANTIES THAT THE APP WILL OPERATE UNINTERRUPTED, ERROR-FREE, OR FREE FROM VIRUSES OR HARMFUL COMPONENTS</li>
+      <li>WARRANTIES AS TO THE ACCURACY, COMPLETENESS, TIMELINESS, OR RELIABILITY OF ANY EMERGENCY INFORMATION, ALERT, ZONE, OR ADVISORY PROVIDED BY THE APP</li>
+      <li>WARRANTIES THAT THE APP WILL MEET YOUR SPECIFIC REQUIREMENTS OR EXPECTATIONS</li>
+    </ul>
+    <p>Some jurisdictions do not allow the exclusion of implied warranties. In such jurisdictions, the above exclusions apply to the fullest extent permitted by law.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T10 -->
+  <div class="policy-section" id="t10">
+    <span class="section-number">Section 10</span>
+    <h2>Limitation of Liability</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, TRAVEL SAFE AND ITS INDIVIDUAL DEVELOPER SHALL NOT BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY:</p>
+    <ul>
+      <li>INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES</li>
+      <li>LOSS OF LIFE, PERSONAL INJURY, OR PROPERTY DAMAGE ARISING FROM YOUR USE OF OR RELIANCE ON THE APP</li>
+      <li>LOSS OF DATA, REVENUE, PROFITS, GOODWILL, OR BUSINESS OPPORTUNITIES</li>
+      <li>DAMAGES ARISING FROM FAILURE, DELAY, INACCURACY, OR OMISSION IN DELIVERING EMERGENCY ALERTS OR INFORMATION</li>
+      <li>DAMAGES ARISING FROM YOUR RELIANCE ON ANY CONTENT, ZONE, ADVISORY, OR INFORMATION DISPLAYED IN THE APP</li>
+    </ul>
+    <p>THIS LIMITATION APPLIES REGARDLESS OF THE LEGAL THEORY UNDER WHICH THE CLAIM IS BROUGHT AND WHETHER OR NOT WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+    <p>Our total aggregate liability to you for any and all claims arising from your use of the App shall not exceed the greater of: (a) the total fees paid by you to Travel Safe in the 12 months preceding the claim, or (b) USD $10.00.</p>
+    <p>Some jurisdictions do not permit the limitation or exclusion of certain damages. In those jurisdictions, our liability is limited to the maximum extent permitted by law.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T11 -->
+  <div class="policy-section" id="t11">
+    <span class="section-number">Section 11</span>
+    <h2>Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless Travel Safe and its individual developer from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising from or relating to:</p>
+    <ul>
+      <li>Your use of or access to the App</li>
+      <li>Your violation of these Terms</li>
+      <li>Any zone submission or content you submit through the App</li>
+      <li>Your violation of any applicable law, regulation, or third-party rights</li>
+      <li>Any misuse of the I'm Safe feature or other App functionality</li>
+    </ul>
+    <p>We reserve the right, at our own expense, to assume exclusive defence and control of any matter otherwise subject to indemnification by you, in which case you agree to cooperate with our defence of such claim.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T12 -->
+  <div class="policy-section" id="t12">
+    <span class="section-number">Section 12</span>
+    <h2>Intellectual Property</h2>
+    <p>All content, features, and functionality of Travel Safe — including but not limited to the app design, user interface, logo, branding, text, graphics, zone intelligence data, software, and source code — are owned by or licensed to the individual developer of Travel Safe and are protected by applicable copyright, trademark, and other intellectual property laws.</p>
+    <p>You are granted a limited, personal, non-exclusive, non-transferable, revocable licence to use the App solely for your own personal, non-commercial purposes in accordance with these Terms. This licence does not include the right to:</p>
+    <ul>
+      <li>Copy, reproduce, or distribute any portion of the App or its content</li>
+      <li>Modify, create derivative works from, or reverse engineer the App</li>
+      <li>Use any data mining, scraping, or similar data extraction methods on the App</li>
+      <li>Use Travel Safe branding or trademarks without prior written permission</li>
+    </ul>
+    <p>Any unauthorised use of Travel Safe's intellectual property may constitute a violation of copyright, trademark, and other applicable laws and may result in legal action.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T13 -->
+  <div class="policy-section" id="t13">
+    <span class="section-number">Section 13</span>
+    <h2>Third-Party Services</h2>
+    <p>Travel Safe integrates with third-party services including Google OAuth, Google Maps, Google Firebase, Supabase, and Google Play. Your use of these services through Travel Safe is also subject to their respective terms of service and privacy policies. We are not responsible for the practices, availability, accuracy, or conduct of any third-party service.</p>
+    <p>The App may contain links to external websites or resources. These links are provided for your convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T14 -->
+  <div class="policy-section" id="t14">
+    <span class="section-number">Section 14</span>
+    <h2>Modifications and Termination</h2>
+    <p><strong>Modifications to the App:</strong> We reserve the right to modify, update, suspend, or discontinue any part of the App — including features, content, and availability — at any time with or without notice. We will not be liable to you or any third party for any modification, suspension, or discontinuation of the App.</p>
+    <p><strong>Modifications to these Terms:</strong> We may update these Terms from time to time. When we make material changes, we will update the effective date and notify users through the App. Your continued use of the App after updated Terms are posted constitutes your acceptance of the changes.</p>
+    <p><strong>Termination by us:</strong> We may terminate or suspend your access to the App immediately and without prior notice if we determine, in our sole discretion, that you have violated these Terms or that your conduct is harmful to users, the platform, or third parties. Upon termination, your right to use the App ceases immediately.</p>
+    <p><strong>Termination by you:</strong> You may stop using the App at any time by uninstalling it. If you have an account, you may request deletion of your account and data by contacting us at travelsafesupport@gmail.com.</p>
+    <p>Sections 8, 9, 10, 11, 12, 15, and 16 of these Terms survive any termination.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T15 -->
+  <div class="policy-section" id="t15">
+    <span class="section-number">Section 15</span>
+    <h2>Governing Law and Dispute Resolution</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the United States, without regard to conflict of law principles.</p>
+    <p><strong>Informal resolution:</strong> Before initiating any formal dispute process, you agree to contact us at travelsafesupport@gmail.com and attempt to resolve the dispute informally. We will attempt to resolve disputes within 30 days.</p>
+    <p><strong>Binding arbitration:</strong> If informal resolution fails, any dispute, controversy, or claim arising out of or relating to these Terms or the App shall be resolved by binding individual arbitration administered in accordance with the rules of the American Arbitration Association (AAA), to the extent permitted by applicable law. The arbitration shall take place in the United States.</p>
+    <p><strong>Class action waiver:</strong> YOU AND TRAVEL SAFE AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. This waiver may not be enforced in all jurisdictions — where it is unenforceable, it shall not apply.</p>
+    <p><strong>Exceptions:</strong> Either party may seek injunctive or other equitable relief in a court of competent jurisdiction to prevent irreparable harm pending arbitration. Nothing in this section limits your rights to bring claims before a small claims court where eligible.</p>
+    <p><strong>Consumer rights:</strong> Nothing in these Terms limits any non-waivable consumer protection rights you may have under the laws of your jurisdiction.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T16 -->
+  <div class="policy-section" id="t16">
+    <span class="section-number">Section 16</span>
+    <h2>Severability and Entire Agreement</h2>
+    <p><strong>Severability:</strong> If any provision of these Terms is found to be unenforceable, invalid, or illegal by a court of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions of these Terms remain in full force and effect.</p>
+    <p><strong>Entire agreement:</strong> These Terms, together with the Privacy Policy incorporated herein by reference, constitute the entire agreement between you and Travel Safe with respect to the App and supersede all prior or contemporaneous agreements, representations, and understandings.</p>
+    <p><strong>Waiver:</strong> Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of that right or provision. A waiver of any provision shall only be effective if in writing.</p>
+    <p><strong>Assignment:</strong> You may not assign your rights or obligations under these Terms without our prior written consent. We may assign these Terms without restriction.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- T17 -->
+  <div class="policy-section" id="t17">
+    <span class="section-number">Section 17</span>
+    <h2>Contact Us</h2>
+    <p>If you have questions, concerns, or complaints about these Terms of Service, please contact us. We take all enquiries seriously and will respond within 30 days.</p>
+    <div class="contact-card">
+      <h3>Travel Safe — Legal Enquiries</h3>
+      <p>Email: <a href="mailto:travelsafesupport@gmail.com">travelsafesupport@gmail.com</a></p>
+      <p>Please include "Terms of Service" in your subject line so we can route your enquiry correctly.</p>
+      <p style="margin-top:16px; font-size:0.8rem; color:rgba(255,255,255,0.4);">Travel Safe is independently operated. Response time: within 30 days.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Travel Safe</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Travel Safe. All rights reserved. Travel Safe is an informational tool. Always follow guidance from local authorities in emergency situations.</p>
+</footer>
+
+</body>
+</html>
