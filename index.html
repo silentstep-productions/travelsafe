@@ -294,7 +294,7 @@
 
   /* FEATURES */
   .features {
-    padding: 100px 48px;
+    padding: 64px 48px;
     max-width: 1100px; margin: 0 auto;
   }
   .section-label {
@@ -308,7 +308,7 @@
     font-size: clamp(2rem, 3.5vw, 2.8rem);
     font-weight: 700;
     color: var(--green-dark);
-    margin-bottom: 64px;
+    margin-bottom: 40px;
     max-width: 480px;
     line-height: 1.2;
   }
@@ -361,7 +361,7 @@
   /* HOW IT WORKS */
   .how {
     background: var(--green-dark);
-    padding: 100px 48px;
+    padding: 64px 48px;
     position: relative; overflow: hidden;
   }
   .how::before {
@@ -376,7 +376,7 @@
     position: relative; z-index: 2;
   }
   .how .section-label { color: var(--green-glow); }
-  .how .section-title { color: var(--white); margin-bottom: 64px; }
+  .how .section-title { color: var(--white); margin-bottom: 40px; }
   .steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -404,7 +404,7 @@
 
   /* ZONE TYPES */
   .zones {
-    padding: 100px 48px;
+    padding: 64px 48px;
     max-width: 1100px; margin: 0 auto;
   }
   .zones-grid {
@@ -607,11 +607,11 @@
     <h1>Know before<br><em>danger arrives.</em></h1>
     <p class="hero-sub">Real-time emergency zone intelligence for travellers, expats, and anyone who needs to know what's happening — sourced from embassies, government advisories, and trusted news feeds.</p>
     <div class="hero-actions">
-      <a href="#download" class="btn-primary" id="download">
+      <a href="https://forms.gle/MAA2wwK8xzibVqR2A" target="_blank" class="btn-primary" id="download">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.37.21.8.22 1.17.04L20.8 14.96c.4-.22.64-.63.64-1.08s-.24-.86-.64-1.08L4.35.16C3.98-.02 3.55-.01 3.18.2c-.38.22-.6.62-.6 1.06v21.44c0 .44.22.84.6 1.06z"/></svg>
-        Download on Google Play
+        Join the Closed Beta
       </a>
-      <span class="hero-note">Free to download</span>
+      <span class="hero-note">Now available in closed beta on Android</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -694,6 +694,47 @@
       <div class="feature-icon">🔍</div>
       <div class="feature-title">Sourced Intelligence</div>
       <p class="feature-desc">Every alert shows exactly where the information came from — government advisories, humanitarian organisations, verified field reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BETA BANNER -->
+<div style="background:#E8A020;padding:14px 48px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+  <span style="font-size:0.88rem;font-weight:700;color:#1A1A1A;letter-spacing:1.5px;">🚀 NOW IN CLOSED BETA ON ANDROID</span>
+  <a href="https://forms.gle/MAA2wwK8xzibVqR2A" target="_blank" style="background:#1A3D1A;color:#fff;font-size:0.82rem;font-weight:700;padding:8px 22px;border-radius:50px;text-decoration:none;letter-spacing:1px;white-space:nowrap;">Request Access →</a>
+</div>
+
+<!-- SCREENSHOTS -->
+<section style="padding:64px 48px;background:#F0F5EC;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p style="font-size:0.78rem;font-weight:500;color:#2D6A2D;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">See It In Action</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#1A3D1A;margin-bottom:16px;line-height:1.2;">Real screenshots.<br>Real intelligence.</h2>
+    <p style="font-size:1rem;font-weight:300;color:#5A6B5A;margin-bottom:48px;max-width:480px;line-height:1.7;">These are live screenshots from the app running in closed beta right now — not mockups.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:24px;align-items:start;">
+      <div style="text-align:center;">
+        <img src="ss1_map.png" alt="Travel Safe live zone map" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">Live Zone Map</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="ss2_intel.png" alt="Travel Safe embassy intelligence" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">Embassy Intelligence</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="ss3_embassy.png" alt="Travel Safe US embassy finder" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">Embassy Finder</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="ss4_sos.png" alt="Travel Safe SOS and I'm Safe" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">SOS & I'm Safe</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="ss5_uk.png" alt="Travel Safe UK travel advisory" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">Travel Advisories</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="ss6_zones.png" alt="Travel Safe zone drawing" loading="lazy" style="width:100%;max-width:195px;border-radius:22px;box-shadow:0 16px 48px rgba(26,61,26,0.18);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+        <p style="font-size:0.82rem;color:#5A6B5A;margin-top:12px;font-weight:500;">Zone Drawing</p>
+      </div>
     </div>
   </div>
 </section>
@@ -863,24 +904,6 @@
   setTimeout(run,1400);
 })();
 </script>
-
-<!-- CTA -->
-<section class="cta">
-  <div class="cta-inner">
-    <h2>Stay safe.<br>Stay informed.</h2>
-    <p>Join travellers, expats, and safety-conscious people worldwide who trust Travel Safe to watch over the places that matter most to them.</p>
-    <a href="#download" class="btn-primary" style="display:inline-flex;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.37.21.8.22 1.17.04L20.8 14.96c.4-.22.64-.63.64-1.08s-.24-.86-.64-1.08L4.35.16C3.98-.02 3.55-.01 3.18.2c-.38.22-.6.62-.6 1.06v21.44c0 .44.22.84.6 1.06z"/></svg>
-      Download Free on Google Play
-    </a>
-    <div class="cta-badges">
-      <span class="badge">Free to download</span>
-      <span class="badge">No account required</span>
-      <span class="badge">Global coverage</span>
-      <span class="badge">Real-time alerts</span>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer>
