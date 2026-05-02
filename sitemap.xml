@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://travlsafe.com/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://travlsafe.com/ss1_map.png</image:loc><image:title>Travel Safe Live Zone Map</image:title></image:image>
+    <image:image><image:loc>https://travlsafe.com/ss2_intel.png</image:loc><image:title>Travel Safe Embassy Intelligence</image:title></image:image>
+    <image:image><image:loc>https://travlsafe.com/ss3_embassy.png</image:loc><image:title>Travel Safe Embassy Finder</image:title></image:image>
+    <image:image><image:loc>https://travlsafe.com/ss4_sos.png</image:loc><image:title>Travel Safe SOS and I'm Safe</image:title></image:image>
+    <image:image><image:loc>https://travlsafe.com/ss5_uk.png</image:loc><image:title>Travel Safe Travel Advisories</image:title></image:image>
+    <image:image><image:loc>https://travlsafe.com/ss6_zones.png</image:loc><image:title>Travel Safe Zone Drawing</image:title></image:image>
+  </url>
+  <url><loc>https://travlsafe.com/about.html</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travlsafe.com/contact.html</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://travlsafe.com/privacy.html</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://travlsafe.com/terms.html</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+</urlset>

@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Disallow: /TravelSafe_Privacy_Policy.html
+Disallow: /TravelSafe_Terms_of_Service.html
+
+# AI Crawlers — explicitly allowed for visibility in AI search
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://travlsafe.com/sitemap.xml

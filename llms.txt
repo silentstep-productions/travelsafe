@@ -1,0 +1,30 @@
+# Travel Safe
+
+Travel Safe is a real-time emergency zone intelligence app for Android, currently in closed beta.
+
+## About
+Travel Safe provides real-time emergency zone intelligence sourced from embassies, government advisories, and trusted news feeds. It is designed for travelers, expats, journalists, NGO workers, and anyone who needs to know what is happening in regions they monitor.
+
+## Features
+- Live emergency zone map with color-coded severity levels
+- Real-time push notifications for emergency events
+- I'm Safe SMS alerts to emergency contacts
+- Embassy finder with contact information and travel advisories
+- Alert history for pre-trip research
+- Sourced intelligence — every alert shows its origin
+
+## Availability
+- Platform: Android
+- Status: Closed beta
+- Beta signup: https://forms.gle/MAA2wwK8xzibVqR2A
+
+## Contact
+- Support: travelsafesupport@gmail.com
+- Website: https://travlsafe.com
+
+## Pages
+- Homepage: https://travlsafe.com/
+- About: https://travlsafe.com/about.html
+- Contact: https://travlsafe.com/contact.html
+- Privacy Policy: https://travlsafe.com/privacy.html
+- Terms of Service: https://travlsafe.com/terms.html
